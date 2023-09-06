@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
+// const bcrypt = require("bcryptjs");
 const fs = require("fs/promises");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+// const cookieSession = require("cookie-session");
+// import { SessionData } from "express-session";
 
 const userDBFile = "customers.json";
 
@@ -32,7 +35,6 @@ async function createStripeCustomer(req: Request, res: Response) {
     const users: User[] = [];
     // Lägg till användaren i databasen (JSON-filen)
     await addUserToDatabase(user);
-
     res.status(200).json({ message: "Registration successful!", user });
   } catch (error) {
     console.error(error);
@@ -66,5 +68,36 @@ async function addUserToDatabase(user: User) {
     throw error;
   }
 }
+//typar session
+// declare module "express" {
+//   interface Request {
+//     session: SessionData;
+//   }
+// }
 
-module.exports = { createStripeCustomer };
+async function loginUser(req: Request, res: Response) {
+  try {
+    const { username, password } = req.body;
+
+    const data = await fs.readFile(userDBFile, "utf8");
+    const users: User[] = JSON.parse(data);
+
+    const user = users.find((u) => u.username === username);
+
+    if (!user) {
+      return res.status(401).json({ message: "User not found" });
+    }
+
+    const isPasswordvalid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordvalid) {
+      return res.status(401).json({ message: "Wrong passwod" });
+    }
+    // req.session.user = user;
+    res.status(200).json({ message: "Inloggning lyckades", user });
+  } catch {
+    console.log("det går ej att logga in");
+  }
+}
+
+module.exports = { createStripeCustomer, loginUser };

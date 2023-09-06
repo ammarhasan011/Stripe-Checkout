@@ -5,6 +5,7 @@ const stripeRoute = require("./routes/stripeRoute");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const customerRoute = require("./routes/customerRoute");
 const loginUser = require("./routes/customerRoute");
+const { productsRoute } = require("./routes/productsRoute");
 const cookieSession = require("cookie-session");
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 
 app.use(
   cookieSession({
+    // name: "session",
     secret: "s3cr3t",
     maxAge: 1000 * 10,
     httpOnly: false,
@@ -25,5 +27,6 @@ app.use(
 app.use("/checkout", stripeRoute);
 app.use("/user", customerRoute);
 app.use("/user", loginUser);
+app.use("/products", productsRoute);
 
 app.listen(3000, () => console.log("Server is up and runninnn..."));

@@ -1,0 +1,44 @@
+[
+  {
+    "username": "user",
+    "email": "user1@gmail.se",
+    "password": "$2a$05$Rpyo3aF16b3t0/0DuSwXq.ajUaoI.B3Q27/gXgqs7xhdFqf5Suvhq",
+    "customerId": "cus_OaUqmDps124wDl"
+  },
+  {
+    "username": "user",
+    "email": "user1@gmail.se",
+    "password": "$2a$05$BcfRY491FXNxFTuKupuepeQql8TPlEeWm.coy8QMKd8/qocK5TPX2",
+    "customerId": "cus_OaUq7ZnE2v4vIN"
+  },
+  {
+    "username": "user",
+    "email": "user1@gmail.se",
+    "password": "$2a$05$k/VamDIYztt80ouVSBCodu0qXAB5FMWOybK1CYQ5LI1gd6cJd3HPC",
+    "customerId": "cus_OaUsltCdwNAjAL"
+  },
+  {
+    "username": "user",
+    "email": "user1@gmail.se",
+    "password": "$2a$05$mmCEQahlitm64BZFiRYQkOhia64T6Tf7Afezfm2RGZgJMT/BPAnxe",
+    "customerId": "cus_OaUwmmGIVRoSEl"
+  },
+  {
+    "username": "user",
+    "email": "user1@gmail.se",
+    "password": "$2a$05$6kYgsaQJgVVJzHaums4S8OJEmyYDU9ns.p/t2OXS2rTpUflviDb2.",
+    "customerId": "cus_OaUx1KkGAglGvq"
+  },
+  {
+    "customerId": "cus_OaV2ZNC0Pocrnv",
+    "username": "user",
+    "email": "user1@gmail.se",
+    "password": "$2a$05$FgRi1CZ.F9Ypa09tGDOwkOD69UgnboRBXDOkSDJfcipNCsp3kZuJO"
+  },
+  {
+    "customerId": "cus_OaV3RUmtD4MVGY",
+    "username": "user",
+    "email": "user1@gmail.se",
+    "password": "$2a$05$s31Aufl.VLKueDB1GSASduUjAUi7ozOPD0tMRGz2Lxra/9aoalUiG"
+  }
+]

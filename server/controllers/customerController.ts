@@ -6,10 +6,10 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const userDBFile = "customers.json";
 
 interface User {
+  customerId: string;
   username: string;
   email: string;
   password: string;
-  customerId: string;
 }
 
 async function createStripeCustomer(req: Request, res: Response) {
@@ -20,17 +20,17 @@ async function createStripeCustomer(req: Request, res: Response) {
     const customer = await stripe.customers.create({ email });
 
     const user: User = {
+      customerId: customer.id,
       username,
       email,
       password: hashedPassword,
-      customerId: customer.id,
     };
 
     const users: User[] = [];
     // Lägg till användaren i databasen (JSON-filen)
     await addUserToDatabase(user);
 
-    res.status(200).json({ message: "Registration successful!" });
+    res.status(200).json({ message: "Registration successful!", user });
   } catch (error) {
     console.error(error);
     res

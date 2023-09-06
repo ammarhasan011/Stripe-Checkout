@@ -64,5 +64,11 @@
     "username": "Martin",
     "email": "Martin@gmail.se",
     "password": "$2a$05$cbxiw0f7hVOu.tIZbIKfneq8jLSjqObEuI73/iSDxjl396OHSDm16"
+  },
+  {
+    "customerId": "cus_OabJhjaX4SSKwQ",
+    "username": "Ammar1",
+    "email": "Martin@gmail.se",
+    "password": "$2b$05$TejfbOuejPWeJZvwKxfoz.LiwtgMZtf4DN8SCm1MxIXGPeWVJZJRW"
   }
 ]

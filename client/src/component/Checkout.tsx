@@ -2,7 +2,7 @@ function Checkout() {
   async function handlePayment() {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/create-checkout-session",
+        "http://localhost:3000/checkout/create-checkout-session",
         {
           method: "POST",
           headers: {

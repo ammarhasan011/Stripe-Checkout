@@ -17,7 +17,10 @@ async function createStripeCustomer(req: Request, res: Response) {
     const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 5);
 
-    const customer = await stripe.customers.create({ email });
+    const customer = await stripe.customers.create({
+      email: email,
+      name: username,
+    });
 
     const user: User = {
       customerId: customer.id,

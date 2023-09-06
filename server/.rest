@@ -2,9 +2,9 @@ POST  http://localhost:3000/user/registerUser
 Content-Type: application/json
 
 {
-    "username": "user",
+    "username": "Martin",
     "password": "12345",
-    "email": "user1@gmail.se"
+    "email": "Martin@gmail.se"
 }
 
 ###

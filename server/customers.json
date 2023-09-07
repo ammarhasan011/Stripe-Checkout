@@ -94,5 +94,29 @@
     "username": "hej",
     "email": "ammarhasan011@gmail.com",
     "password": "$2b$05$V1ToWyPD.bq2JYxMpr5mI.bsDC86trTdX8ap3ePnA1sIaKNOdLwSu"
+  },
+  {
+    "customerId": "cus_OasSrcDF7sSZn9",
+    "username": "Jonas",
+    "email": "jonas@Jonas.se",
+    "password": "$2b$05$Wy5fOoN/bg4lF6JzpysvbemI0gscPZE2X5gADc1GtaBXLDrmdYDce"
+  },
+  {
+    "customerId": "cus_OasqcrAdIMvNHl",
+    "username": "Jonas11",
+    "email": "Jonas11@Jonas11.se",
+    "password": "$2b$05$eNDvtQQcpd8/CLaKeJcjOeAKDzZveOtZyuAAh.ZpBgZSclPKGVTOu"
+  },
+  {
+    "customerId": "cus_Oat0GKnYTsH8AY",
+    "username": "test1",
+    "email": "123@gmail.com",
+    "password": "$2b$05$gCD.vehadFxjLaFx78TuHe5u56wS16QZBXwn50820d8NY6ryCWxgK"
+  },
+  {
+    "customerId": "cus_Oat1oD7co5kH5S",
+    "username": "erik",
+    "email": "erik@erik.se",
+    "password": "$2b$05$fW7BPtFghnwK/Nor6QeOHuVWzBCKkAXFNXl45aSvbaw5MIKsl15yu"
   }
 ]

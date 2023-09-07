@@ -70,5 +70,29 @@
     "username": "Ammar1",
     "email": "Martin@gmail.se",
     "password": "$2b$05$TejfbOuejPWeJZvwKxfoz.LiwtgMZtf4DN8SCm1MxIXGPeWVJZJRW"
+  },
+  {
+    "customerId": "cus_Oarl4EbbloFsTg",
+    "username": "test1",
+    "email": "ammarhasan011@gmail.com",
+    "password": "$2b$05$CZKnbTKtZWJmnGNeYEaJr.7fshATedDhnuDxx6CEGFB5K6QkUma/6"
+  },
+  {
+    "customerId": "cus_OarmrtP96qwwex",
+    "username": "Ammar Hasan ",
+    "email": "ammarhasan@gmail.com",
+    "password": "$2b$05$3ggRT6QaZgY0cGQa2UWoIu7FK976A9yJQA6gBO9JbJLym/PWA2MU6"
+  },
+  {
+    "customerId": "cus_Oarw7ZGErl82FV",
+    "username": "hej hej",
+    "email": "hejhej@hej.se",
+    "password": "$2b$05$7kheal7R7RddIjgDCHWHMeblUX7Q6OxoGc0FgaR71FyXIs5pnxMkG"
+  },
+  {
+    "customerId": "cus_Oas2vMJL5rhSAS",
+    "username": "hej",
+    "email": "ammarhasan011@gmail.com",
+    "password": "$2b$05$V1ToWyPD.bq2JYxMpr5mI.bsDC86trTdX8ap3ePnA1sIaKNOdLwSu"
   }
 ]

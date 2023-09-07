@@ -1,4 +1,8 @@
+import axios from "axios";
 import React, { useState, ChangeEvent } from "react";
+
+//för att visa ett medelande att man har loggat in med en timeout
+// const [registrationMessage, setRegistrationMessage] = useState("");
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -14,15 +18,36 @@ function RegisterForm() {
       [name]: value,
     });
   };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Registreringsdata:", formData);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/user/registerUser",
+        formData
+      );
+      console.log("Registration succeeded:", response.data.message);
+
+      // Återställ formuläret
+      setFormData({
+        username: "",
+        email: "",
+        password: "",
+      });
+      // setRegistrationMessage("Registreringen lyckades!");
+
+      // setTimeout(() => {
+      //   setRegistrationMessage("");
+      // }, 4000);
+    } catch (error: any) {
+      console.error("Registration failed:", error.response.data.message);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Registrera dig</h2>
-
+      {/* {registrationMessage && <p>{registrationMessage}</p>} */}
       <label>
         Användernamn:
         <input

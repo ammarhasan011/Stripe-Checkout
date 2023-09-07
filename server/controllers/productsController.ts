@@ -11,7 +11,6 @@ async function getAllProducts(req: Request, res: Response) {
 
       if (prices.data.length > 0) {
         const price = prices.data[0];
-
         const productInfo = {
           id: product.id,
           name: product.name,

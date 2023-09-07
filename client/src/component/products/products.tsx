@@ -8,7 +8,10 @@ interface Product {
   image: string;
   price: number;
 }
-
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
 function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<any[]>([]);
@@ -65,6 +68,16 @@ function ProductList() {
               Lägg till i varukorg
             </button>
             <button onClick={() => removeFromCart(product.id)}>Ta bort</button>
+          </div>
+        ))}
+      </ul>
+
+      <h2>Varukorg</h2>
+      <ul>
+        {cartItems.map((cartItem) => (
+          <div key={cartItem.product.id}>
+            <h3>{cartItem.product.name}</h3>
+            <p>Antal: {cartItem.quantity}</p>
           </div>
         ))}
       </ul>

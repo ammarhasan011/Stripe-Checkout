@@ -11,6 +11,34 @@ interface Product {
 
 function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<any[]>([]);
+  console.log(cartItems);
+
+  function addToCart(product: Product) {
+    const existingItem = cartItems.find(
+      (item) => item.product.id === product.id
+    );
+
+    if (existingItem) {
+      const updatedCartItems = cartItems.map((item) =>
+        item.product.id === product.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      setCartItems(updatedCartItems);
+    } else {
+      setCartItems([...cartItems, { product, quantity: 1 }]);
+    }
+  }
+
+  function removeFromCart(productId: string) {
+    const updatedCartItems = cartItems.map((item) =>
+      item.product.id === productId
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    setCartItems(updatedCartItems.filter((item) => item.quantity > 0));
+  }
 
   useEffect(() => {
     axios
@@ -28,12 +56,16 @@ function ProductList() {
       <h1>Produkter</h1>
       <ul>
         {products.map((product) => (
-          <li key={product.id}>
+          <div key={product.id}>
             <h2>{product.name}</h2>
             <p>{product.description}</p>
             <img src={product.image} alt={product.name} />
             <p>Pris: {product.price} kr</p>
-          </li>
+            <button onClick={() => addToCart(product)}>
+              Lägg till i varukorg
+            </button>
+            <button onClick={() => removeFromCart(product.id)}>Ta bort</button>
+          </div>
         ))}
       </ul>
     </div>

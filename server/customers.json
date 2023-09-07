@@ -118,5 +118,17 @@
     "username": "erik",
     "email": "erik@erik.se",
     "password": "$2b$05$fW7BPtFghnwK/Nor6QeOHuVWzBCKkAXFNXl45aSvbaw5MIKsl15yu"
+  },
+  {
+    "customerId": "cus_Oat47BMY1K9Y2U",
+    "username": "hej",
+    "email": "hej@gmail.com",
+    "password": "$2b$05$AC6UD6sx7/I36S/YwLxkPetTc2.vllJW.6Etbylq8nabP6eukQpKC"
+  },
+  {
+    "customerId": "cus_OatCG90Mp9L7ve",
+    "username": "123",
+    "email": "123@123.se",
+    "password": "$2b$05$7pmj6HYcq9WFBbcwaiKTE.EfNa.hB5bH6MwGzuvSif6m8gXXlgnvC"
   }
 ]

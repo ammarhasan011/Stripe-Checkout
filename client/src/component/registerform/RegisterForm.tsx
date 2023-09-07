@@ -1,15 +1,14 @@
 import axios from "axios";
 import React, { useState, ChangeEvent } from "react";
 
-//för att visa ett medelande att man har loggat in med en timeout
-// const [registrationMessage, setRegistrationMessage] = useState("");
-
 function RegisterForm() {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
+
+  const [registrationMessage, setRegistrationMessage] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -34,11 +33,11 @@ function RegisterForm() {
         email: "",
         password: "",
       });
-      // setRegistrationMessage("Registreringen lyckades!");
+      setRegistrationMessage("Registreringen lyckades!");
 
-      // setTimeout(() => {
-      //   setRegistrationMessage("");
-      // }, 4000);
+      setTimeout(() => {
+        setRegistrationMessage("");
+      }, 4000);
     } catch (error: any) {
       console.error("Registration failed:", error.response.data.message);
     }
@@ -47,7 +46,7 @@ function RegisterForm() {
   return (
     <form onSubmit={handleSubmit}>
       <h2>Registrera dig</h2>
-      {/* {registrationMessage && <p>{registrationMessage}</p>} */}
+      {registrationMessage && <p>{registrationMessage}</p>}
       <label>
         Användernamn:
         <input

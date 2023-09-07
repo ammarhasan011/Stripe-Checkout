@@ -7,7 +7,7 @@ function LoginForm() {
     password: "",
   });
 
-  const [registrationMessage, setRegistrationMessage] = useState("");
+  const [loginMessage, setloginMessage] = useState("");
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -31,10 +31,10 @@ function LoginForm() {
         username: "",
         password: "",
       });
-      setRegistrationMessage("Du loggade in!");
+      setloginMessage("Du loggade in!");
 
       setTimeout(() => {
-        setRegistrationMessage("");
+        setloginMessage("");
       }, 4000);
     } catch (error: any) {
       console.log("Login failed", error.response.data.message);
@@ -44,7 +44,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit}>
       <h2>login</h2>
-      {registrationMessage && <p>{registrationMessage}</p>}
+      {loginMessage && <p>{loginMessage}</p>}
       <label>
         Användernamn:
         <input

@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
 const bcrypt = require("bcrypt");
-// const bcrypt = require("bcryptjs");
 const fs = require("fs/promises");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-// const cookieSession = require("cookie-session");
-// import { SessionData } from "express-session";
 
 const userDBFile = "customers.json";
 
@@ -68,12 +65,6 @@ async function addUserToDatabase(user: User) {
     throw error;
   }
 }
-//typar session
-// declare module "express" {
-//   interface Request {
-//     session: SessionData;
-//   }
-// }
 
 async function loginUser(req: Request, res: Response) {
   try {
@@ -91,9 +82,9 @@ async function loginUser(req: Request, res: Response) {
     const isPasswordvalid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordvalid) {
-      return res.status(401).json({ message: "Wrong passwod" });
+      return res.status(401).json({ message: "Wrong password" });
     }
-    // req.session.user = user;
+    //  req.session.user;
     res.status(200).json({ message: "Inloggning lyckades", user });
   } catch {
     console.log("det går ej att logga in");

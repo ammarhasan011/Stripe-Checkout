@@ -21,10 +21,7 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/user/loginUser",
-        FormData
-      );
+      const response = await axios.post("/user/loginUser", FormData);
       console.log("login succeeded", response.data.message);
 
       setFormData({

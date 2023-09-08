@@ -12,6 +12,10 @@ interface User {
   password: string;
 }
 
+interface RequestWithSession extends Request {
+  session?: any;
+}
+
 async function createStripeCustomer(req: Request, res: Response) {
   try {
     const { username, email, password } = req.body;
@@ -66,7 +70,7 @@ async function addUserToDatabase(user: User) {
   }
 }
 
-async function loginUser(req: Request, res: Response) {
+async function loginUser(req: RequestWithSession, res: Response) {
   try {
     const { username, password } = req.body;
 
@@ -84,7 +88,7 @@ async function loginUser(req: Request, res: Response) {
     if (!isPasswordvalid) {
       return res.status(401).json({ message: "Wrong password" });
     }
-    //  req.session.user;
+    req.session = user;
     res.status(200).json({ message: "Inloggning lyckades", user });
   } catch {
     console.log("det går ej att logga in");

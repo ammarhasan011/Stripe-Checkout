@@ -14,7 +14,7 @@ async function createCheckoutSession(req: Request, res: Response) {
             },
             unit_amount: 20000,
           },
-          quantity: 2,
+          quantity: 1,
         },
       ],
       mode: "payment",

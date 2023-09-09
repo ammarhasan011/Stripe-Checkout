@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CircularIndeterminate from "../Loading/Loading";
 
 interface Product {
   id: string;
@@ -11,6 +12,7 @@ interface Product {
 
 function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function addToCart(product: Product) {
     const existingCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -32,28 +34,34 @@ function ProductList() {
       .get("http://localhost:3000/products/getAllProducts")
       .then((response) => {
         setProducts(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching products", error);
+        setIsLoading(false);
       });
   }, []);
 
   return (
     <div>
       <h1>Produkter</h1>
-      <ul>
-        {products.map((product) => (
-          <div key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <img src={product.image} alt={product.name} />
-            <p>Pris: {product.price} kr</p>
-            <button onClick={() => addToCart(product)}>
-              Lägg till i varukorg
-            </button>
-          </div>
-        ))}
-      </ul>
+      {isLoading ? (
+        <CircularIndeterminate />
+      ) : (
+        <ul>
+          {products.map((product) => (
+            <div key={product.id}>
+              <h2>{product.name}</h2>
+              <p>{product.description}</p>
+              <img src={product.image} alt={product.name} />
+              <p>Pris: {product.price} kr</p>
+              <button onClick={() => addToCart(product)}>
+                Lägg till i varukorg
+              </button>
+            </div>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CircularIndeterminate from "../Loading/Loading";
+import MultiActionAreaCard from "../Cards/Cards"; // Uppdatera sökvägen till din MultiActionAreaCard-komponent
 
 interface Product {
   id: string;
@@ -48,19 +49,15 @@ function ProductList() {
       {isLoading ? (
         <CircularIndeterminate />
       ) : (
-        <ul>
+        <div className="card-container">
           {products.map((product) => (
-            <div key={product.id}>
-              <h2>{product.name}</h2>
-              <p>{product.description}</p>
-              <img src={product.image} alt={product.name} />
-              <p>Pris: {product.price} kr</p>
-              <button onClick={() => addToCart(product)}>
-                Lägg till i varukorg
-              </button>
-            </div>
+            <MultiActionAreaCard
+              key={product.id}
+              product={product}
+              addToCart={addToCart}
+            />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

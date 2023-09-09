@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Checkout from "../checkout/Checkout";
 import { CartItem } from "./types";
+import MultiActionAreaCard from "../Cards/Cards";
 
 function Cart() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -62,6 +63,22 @@ function Cart() {
       <ul>
         {cartItems.map((cartItem) => (
           <div key={cartItem.product.id}>
+            <MultiActionAreaCard
+              product={cartItem.product}
+              addToCart={() => {}}
+            />
+            <p>Antal: {cartItem.quantity}</p>
+            <p>Pris per styck: {cartItem.product.price} kr</p>
+            <p>Totalt: {cartItem.product.price * cartItem.quantity} kr</p>
+            <button onClick={() => handleIncrement(cartItem)}>+</button>
+            <button onClick={() => handleDecrement(cartItem)}>-</button>
+            <button onClick={() => handleRemove(cartItem)}>Ta bort</button>
+          </div>
+        ))}
+      </ul>
+      {/* <ul>
+        {cartItems.map((cartItem) => (
+          <div key={cartItem.product.id}>
             <h3>{cartItem.product.name}</h3>
             <img src={cartItem.product.image} alt={cartItem.product.name} />
             <p>Antal: {cartItem.quantity}</p>
@@ -72,7 +89,7 @@ function Cart() {
             <button onClick={() => handleRemove(cartItem)}>Ta bort</button>
           </div>
         ))}
-      </ul>
+      </ul> */}
       <h4>Totalt att betala: {totalPrice} kr</h4>
       <Checkout />
     </div>

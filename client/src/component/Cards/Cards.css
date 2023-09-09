@@ -1,0 +1,18 @@
+.CardDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .Card {
+    max-width: 200px;
+    margin: 10px; /* Justera avståndet mellan korten om det behövs */
+  }
+  
+  .CardMedia {
+    height: 330px; /* Justera höjden efter ditt behov */
+    object-fit: contain; /* Använd "contain" för att bevara bildens proportioner */
+  }
+  

@@ -7,14 +7,15 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+// import Tooltip from "@mui/material/Tooltip";
+// import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import { Link } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+// const pages = ["1"];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -23,12 +24,10 @@ function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  const [loginFormOpen, setLoginFormOpen] = React.useState(false);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -39,16 +38,20 @@ function Header() {
     setAnchorElUser(null);
   };
 
+  const handleLoginFormOpen = () => {
+    setLoginFormOpen(true);
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/* icon*/}
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -59,8 +62,38 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Ammar
           </Typography>
+
+          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <Button sx={{ my: 2, color: "white", display: "block" }}>
+              Hem
+            </Button>
+          </Link>
+
+          <Link
+            to="/user/loginUser"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Button
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={handleLoginFormOpen}
+            >
+              Logga in
+            </Button>
+          </Link>
+
+          <Link
+            to="/user/registerUser"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Button
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={handleLoginFormOpen}
+            >
+              registrera dig
+            </Button>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -71,6 +104,7 @@ function Header() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
+              {/* <ShoppingCartIcon /> */}
               <MenuIcon />
             </IconButton>
             <Menu
@@ -90,13 +124,7 @@ function Header() {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            ></Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
@@ -117,24 +145,19 @@ function Header() {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
+
+          <Link to="/cart">
+            <IconButton
+              sx={{ my: 2, color: "white", display: "block" }}
+              // Lägg till din inköpsfunktionalitet här
+            >
+              <ShoppingCartIcon />
+            </IconButton>
+          </Link>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -150,13 +173,7 @@ function Header() {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            ></Menu>
           </Box>
         </Toolbar>
       </Container>

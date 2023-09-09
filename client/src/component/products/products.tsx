@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -12,35 +13,23 @@ interface CartItem {
   product: Product;
   quantity: number;
 }
+
 function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [cartItems, setCartItems] = useState<any[]>([]);
-  console.log(cartItems);
 
   function addToCart(product: Product) {
-    const existingItem = cartItems.find(
-      (item) => item.product.id === product.id
+    const existingCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const existingItem = existingCartItems.find(
+      (item: any) => item.product.id === product.id
     );
 
     if (existingItem) {
-      const updatedCartItems = cartItems.map((item) =>
-        item.product.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-      setCartItems(updatedCartItems);
+      existingItem.quantity++;
     } else {
-      setCartItems([...cartItems, { product, quantity: 1 }]);
+      existingCartItems.push({ product, quantity: 1 });
     }
-  }
 
-  function removeFromCart(productId: string) {
-    const updatedCartItems = cartItems.map((item) =>
-      item.product.id === productId
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
-    setCartItems(updatedCartItems.filter((item) => item.quantity > 0));
+    localStorage.setItem("cart", JSON.stringify(existingCartItems));
   }
 
   useEffect(() => {
@@ -67,17 +56,6 @@ function ProductList() {
             <button onClick={() => addToCart(product)}>
               Lägg till i varukorg
             </button>
-            <button onClick={() => removeFromCart(product.id)}>Ta bort</button>
-          </div>
-        ))}
-      </ul>
-
-      <h2>Varukorg</h2>
-      <ul>
-        {cartItems.map((cartItem) => (
-          <div key={cartItem.product.id}>
-            <h3>{cartItem.product.name}</h3>
-            <p>Antal: {cartItem.quantity}</p>
           </div>
         ))}
       </ul>

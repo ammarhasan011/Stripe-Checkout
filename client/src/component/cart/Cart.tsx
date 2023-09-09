@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { CartItem } from "./types"; // Importera CartItem från types.ts
 import Checkout from "../checkout/Checkout";
+import { CartItem } from "./types";
 
 function Cart() {
-  const [cartItems, setCartItems] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
     const cartItemsJson = localStorage.getItem("cart") || "[]";
@@ -21,7 +21,7 @@ function Cart() {
     setTotalPrice(total);
   };
 
-  const handleIncrement = (item) => {
+  const handleIncrement = (item: CartItem) => {
     const updatedCart = cartItems.map((cartItem) =>
       cartItem.product.id === item.product.id
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
@@ -32,7 +32,7 @@ function Cart() {
     calculateTotalPrice(updatedCart);
   };
 
-  const handleDecrement = (item) => {
+  const handleDecrement = (item: CartItem) => {
     if (item.quantity === 1) {
       handleRemove(item);
     } else {
@@ -47,7 +47,7 @@ function Cart() {
     }
   };
 
-  const handleRemove = (item) => {
+  const handleRemove = (item: CartItem) => {
     const updatedCart = cartItems.filter(
       (cartItem) => cartItem.product.id !== item.product.id
     );

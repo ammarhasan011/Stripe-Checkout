@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -8,10 +7,6 @@ interface Product {
   description: string;
   image: string;
   price: number;
-}
-interface CartItem {
-  product: Product;
-  quantity: number;
 }
 
 function ProductList() {

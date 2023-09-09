@@ -2,7 +2,7 @@
 // import Checkout from "./checkout/Checkout";
 import ProductList from "./products/products";
 // import LoginForm from "./login/LoginForm";
-import Cart from "./cart/Cart";
+// import Cart from "./cart/Cart";
 // import Header from "./Header/Header";
 
 function Home() {

@@ -4,6 +4,7 @@ import ProductList from "./products/products";
 // import LoginForm from "./login/LoginForm";
 // import Cart from "./cart/Cart";
 // import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 function Home() {
   return (
@@ -20,6 +21,7 @@ function Home() {
       <ProductList />
       <br />
       {/* <Cart /> */}
+      <Footer />
     </div>
   );
 }

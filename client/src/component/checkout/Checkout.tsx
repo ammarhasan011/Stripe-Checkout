@@ -1,4 +1,10 @@
+import { useState } from "react";
+
 function Checkout() {
+  const [cartItems, setCartItems] = useState([
+    { product: "price_1NnKkQHGDNbcqHddO65c8zUb", quantity: 2 },
+  ]);
+
   async function handlePayment() {
     try {
       const response = await fetch(
@@ -8,7 +14,7 @@ function Checkout() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({}),
+          body: JSON.stringify({ cartItems }),
         }
       );
 

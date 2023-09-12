@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
 
 function Checkout() {
-  const [cartItems, setCartItems] = useState([
-    { product: "price_1NnKkQHGDNbcqHddO65c8zUb", quantity: 2 },
-  ]);
-
+  const { cartItems } = useContext(CartContext);
+  console.log(cartItems);
   async function handlePayment() {
     try {
       const response = await fetch(

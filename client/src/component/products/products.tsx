@@ -1,33 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import CircularIndeterminate from "../Loading/Loading";
-import MultiActionAreaCard from "../Cards/Cards"; // Uppdatera sökvägen till din MultiActionAreaCard-komponent
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-}
+import MultiActionAreaCard from "../Cards/Cards";
+import { CartContext } from "../../Context/CartContext";
+import Product from "../Interfaces/Product";
 
 function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   function addToCart(product: Product) {
-    const existingCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existingItem = existingCartItems.find(
-      (item: any) => item.product.id === product.id
+    const existingCartItem = cartItems.find(
+      (item: any) => item.product === product.default_price
     );
-
-    if (existingItem) {
-      existingItem.quantity++;
+    if (existingCartItem) {
+      const updatedCart = cartItems.map((item: any) =>
+        item.product === product.default_price
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      setCartItems(updatedCart);
     } else {
-      existingCartItems.push({ product, quantity: 1 });
+      setCartItems([
+        ...cartItems,
+        { product: product.default_price, quantity: 1 },
+      ]);
     }
 
-    localStorage.setItem("cart", JSON.stringify(existingCartItems));
+    // const existingCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    // const existingItem = existingCartItems.find(
+    //   (item: any) => item.product.id === product.id
+    // );
+    // if (existingItem) {
+    //   existingItem.quantity++;
+    // } else {
+    //   existingCartItems.push({ product, quantity: 1 });
+    // }
+    // localStorage.setItem("cart", JSON.stringify(existingCartItems));
   }
 
   useEffect(() => {

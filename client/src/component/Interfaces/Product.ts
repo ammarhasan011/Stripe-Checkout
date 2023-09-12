@@ -5,6 +5,7 @@ interface Product {
   image: string;
   price: number;
   default_price: string;
+  quantity: number;
 }
 
 export default Product;

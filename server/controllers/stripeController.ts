@@ -9,17 +9,15 @@ interface cartItem {
 async function createCheckoutSession(req: Request, res: Response) {
   try {
     const cartItems: cartItem[] = req.body.cartItems;
-    console.log(cartItems);
-
-    const lineItems = cartItems.map((cartItem) => {
-      return {
-        price: cartItem.product,
-        quantity: cartItem.quantity,
-      };
-    });
+    console.log("Cart Items:", cartItems);
 
     const session = await stripe.checkout.sessions.create({
-      line_items: lineItems,
+      line_items: cartItems.map((cartItem) => {
+        return {
+          price: cartItem.product,
+          quantity: cartItem.quantity,
+        };
+      }),
       mode: "payment",
       success_url: "http://localhost:5173/CONFIRMATION",
       cancel_url: "http://localhost:5173",

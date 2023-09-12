@@ -17,9 +17,7 @@ export const CartContext = createContext<CartContextType | undefined>(
 );
 
 export const CartContextProvider = ({ children }: PropsWithChildren) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    // { product: "price_1NnKkQHGDNbcqHddO65c8zUb", quantity: 5 },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>
       {children}

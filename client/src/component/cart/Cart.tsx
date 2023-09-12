@@ -23,7 +23,7 @@ function Cart() {
   };
 
   const handleIncrement = (item: CartItem) => {
-    const updatedCart = cartItems.map((cartItem) =>
+    const updatedCart = cartItems.map((cartItem: CartItem) =>
       cartItem.name === item.name
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
@@ -37,7 +37,7 @@ function Cart() {
     if (item.quantity === 1) {
       handleRemove(item);
     } else {
-      const updatedCart = cartItems.map((cartItem) =>
+      const updatedCart = cartItems.map((cartItem: CartItem) =>
         cartItem.name === item.name
           ? { ...cartItem, quantity: cartItem.quantity - 1 }
           : cartItem
@@ -50,7 +50,7 @@ function Cart() {
 
   const handleRemove = (item: CartItem) => {
     const updatedCart = cartItems.filter(
-      (cartItem) => cartItem.name !== item.name
+      (cartItem: CartItem) => cartItem.name !== item.name
     );
     setCartItems(updatedCart);
     // localStorage.setItem("cart", JSON.stringify(updatedCart));
@@ -61,7 +61,7 @@ function Cart() {
     <div>
       <h2>Varukorg</h2>
 
-      {cartItems.map((cartItem: any, index: any) => (
+      {cartItems.map((cartItem: CartItem, index: any) => (
         <div key={index}>
           <h3>{cartItem.name}</h3>
           <img src={cartItem.image} alt={cartItem.name} />

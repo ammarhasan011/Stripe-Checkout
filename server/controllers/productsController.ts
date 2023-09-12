@@ -17,6 +17,7 @@ async function getAllProducts(req: Request, res: Response) {
           description: product.description,
           image: product.images[0],
           price: price.unit_amount / 100,
+          default_price: price.id,
         };
         productsWithInfo.push(productInfo);
       }

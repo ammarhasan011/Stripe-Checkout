@@ -5,14 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import "./Cards.css";
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-}
+import Product from "../Interfaces/Product";
 
 interface MultiActionAreaCardProps {
   product: Product;

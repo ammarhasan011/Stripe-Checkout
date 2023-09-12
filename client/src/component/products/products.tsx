@@ -24,7 +24,13 @@ function ProductList() {
     } else {
       setCartItems([
         ...cartItems,
-        { product: product.default_price, quantity: 1 },
+        {
+          product: product.default_price,
+          quantity: 1,
+          image: product.image,
+          name: product.name,
+          price: product.price,
+        },
       ]);
     }
 

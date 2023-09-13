@@ -62,7 +62,7 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            Ammar
+            M Shop
           </Typography>
 
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>

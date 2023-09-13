@@ -16,9 +16,8 @@ app.use(cors());
 
 app.use(
   cookieSession({
-    // name: "session",
     secret: "s3cr3t",
-    maxAge: 1000 * 10,
+    maxAge: 1000 * 60 * 60 * 12,
     httpOnly: false,
   })
 );

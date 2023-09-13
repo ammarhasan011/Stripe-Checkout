@@ -12,9 +12,7 @@ interface CartContextType {
   setCartItems: Dispatch<SetStateAction<CartItem[]>>;
 }
 
-export const CartContext = createContext<CartContextType | undefined>(
-  undefined
-);
+export const CartContext = createContext<CartContextType>(null as any);
 
 export const CartContextProvider = ({ children }: PropsWithChildren) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);

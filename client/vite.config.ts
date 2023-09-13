@@ -7,8 +7,10 @@ export default defineConfig({
       "/user": {
         target: "http://localhost:3000",
       },
+      "/checkout": {
+        target: "http://localhost:3000",
+      },
     },
   },
-
   plugins: [react()],
 });

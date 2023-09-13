@@ -21,6 +21,7 @@ async function createCheckoutSession(req: Request, res: Response) {
       mode: "payment",
       success_url: "http://localhost:5173/CONFIRMATION",
       cancel_url: "http://localhost:5173",
+      allow_promotion_codes: true,
     });
 
     res.status(200).json({ url: session.url });

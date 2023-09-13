@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import CircularIndeterminate from "../Loading/Loading";
 import MultiActionAreaCard from "../Cards/Cards";

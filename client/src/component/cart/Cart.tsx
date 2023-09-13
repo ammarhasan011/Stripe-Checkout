@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import Checkout from "../checkout/Checkout";
+import Checkout from "../Checkout/Checkout";
 import { CartItem } from "../Interfaces/CartItem";
 import { CartContext } from "../../Context/CartContext";
 

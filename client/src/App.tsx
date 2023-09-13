@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./component/Home";
 import Confirmation from "./component/Confirmation";
 import Header from "./component/Header/Header";
-import LoginForm from "./component/login/LoginForm";
-import RegisterForm from "./component/registerform/RegisterForm";
-import Cart from "./component/cart/Cart";
+import LoginForm from "./component/Login/LoginForm";
+import RegisterForm from "./component/Registerform/RegisterForm";
+import Cart from "./component/Cart/Cart";
 import { CartContextProvider } from "./Context/CartContext";
 
 function App() {

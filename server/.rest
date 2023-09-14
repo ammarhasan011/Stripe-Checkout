@@ -22,3 +22,17 @@ Content-Type: application/json
 GET http://localhost:3000/products/getAllProducts
 
 ###
+
+
+POST http://localhost:3000/checkout/create-checkout-session
+Content-Type: application/json
+
+{
+  "cartItems": [
+    {
+      "product": "price_1NnKRCHGDNbcqHddt0JBxsEE",
+      "quantity": 2
+    }
+  ],
+  "customerId": "cus_Od7cO7WMaaR9Oj"
+}

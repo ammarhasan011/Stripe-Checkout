@@ -6,10 +6,17 @@ interface cartItem {
   quantity: number;
 }
 
-async function createCheckoutSession(req: Request, res: Response) {
+interface RequestWithSession extends Request {
+  session?: any;
+}
+
+async function createCheckoutSession(req: RequestWithSession, res: Response) {
   try {
     const cartItems: cartItem[] = req.body.cartItems;
     console.log("Cart Items:", cartItems);
+
+    const customerId = req.session.customerId;
+    // console.log("custemer i Server", customerId);
 
     const session = await stripe.checkout.sessions.create({
       line_items: cartItems.map((cartItem) => {
@@ -18,12 +25,12 @@ async function createCheckoutSession(req: Request, res: Response) {
           quantity: cartItem.quantity,
         };
       }),
+      customer: customerId,
       mode: "payment",
       success_url: "http://localhost:5173/CONFIRMATION",
       cancel_url: "http://localhost:5173",
       allow_promotion_codes: true,
     });
-
     res.status(200).json({ url: session.url });
   } catch (error) {
     console.error("Error creating checkout session:", error);

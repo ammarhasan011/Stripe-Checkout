@@ -1,22 +1,28 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
 
 function Checkout() {
   const { cartItems } = useContext(CartContext);
   console.log(cartItems);
+
+  const [customerId, setCustomerId] = useState("");
+
   async function handlePayment() {
     try {
       const response = await fetch(
-        "http://localhost:3000/checkout/create-checkout-session",
+        "/checkout/create-checkout-session",
+
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ cartItems }),
+          body: JSON.stringify({
+            cartItems,
+            customerId,
+          }),
         }
       );
-
       if (!response.ok) {
         console.error("Begäran misslyckades");
         return;

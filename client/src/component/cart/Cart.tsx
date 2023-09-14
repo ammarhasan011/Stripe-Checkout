@@ -6,6 +6,7 @@ import { CartContext } from "../../Context/CartContext";
 function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   console.log(cartItems);
   // useEffect(() => {
   //   const cartItemsJson = localStorage.getItem("cart") || "[]";
@@ -13,6 +14,11 @@ function Cart() {
   //   setCartItems(parsedCartItems);
   //   calculateTotalPrice(parsedCartItems);
   // }, []);
+
+  // const isLoggedIn = () => {
+  //   //en if sats
+  //   setIsLoggedIn(true);
+  // };
 
   const calculateTotalPrice = (product: CartItem[]) => {
     let total = 0;
@@ -60,7 +66,6 @@ function Cart() {
   return (
     <div>
       <h2>Varukorg</h2>
-
       {cartItems.map((cartItem: CartItem, index: any) => (
         <div key={index}>
           <h3>{cartItem.name}</h3>
@@ -73,8 +78,8 @@ function Cart() {
           <button onClick={() => handleRemove(cartItem)}>Ta bort</button>
         </div>
       ))}
-
       <h4>Totalt att betala: {totalPrice} kr</h4>
+      {/* {isLoggedIn ? <Checkout /> : <p>Logga in för att kunna betala</p>} */}
       <Checkout />
     </div>
   );

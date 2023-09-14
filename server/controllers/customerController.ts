@@ -88,7 +88,8 @@ async function loginUser(req: RequestWithSession, res: Response) {
     if (!isPasswordvalid) {
       return res.status(401).json({ message: "Wrong password" });
     }
-    req.session = user;
+
+    req.session.customerId = user.customerId;
     res.status(200).json({ message: "Inloggning lyckades", user });
   } catch {
     console.log("det går ej att logga in");

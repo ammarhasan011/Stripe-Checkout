@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Checkout from "../Checkout/Checkout";
 import { CartItem } from "../Interfaces/CartItem";
 import { CartContext } from "../../Context/CartContext";
@@ -6,19 +6,31 @@ import { CartContext } from "../../Context/CartContext";
 function Cart() {
   const { cartItems, setCartItems } = useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  console.log(cartItems);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+
   // useEffect(() => {
   //   const cartItemsJson = localStorage.getItem("cart") || "[]";
   //   const parsedCartItems = JSON.parse(cartItemsJson);
   //   setCartItems(parsedCartItems);
   //   calculateTotalPrice(parsedCartItems);
   // }, []);
+  useEffect(() => {
+    const checkCustomerId = async () => {
+      try {
+        const response = await fetch("/user/isLoggedIn");
+        if (response.ok) {
+          const data = await response.json();
+          setIsLoggedIn(data.loggedIn);
+        } else {
+          setIsLoggedIn(false);
+        }
+      } catch (error) {
+        setIsLoggedIn(false);
+      }
+    };
 
-  // const isLoggedIn = () => {
-  //   //en if sats
-  //   setIsLoggedIn(true);
-  // };
+    checkCustomerId();
+  }, []);
 
   const calculateTotalPrice = (product: CartItem[]) => {
     let total = 0;
@@ -80,7 +92,11 @@ function Cart() {
       ))}
       <h4>Totalt att betala: {totalPrice} kr</h4>
       {/* {isLoggedIn ? <Checkout /> : <p>Logga in för att kunna betala</p>} */}
-      <Checkout />
+      {isLoggedIn === true ? (
+        <Checkout />
+      ) : (
+        <p>Logga in för att kunna betala</p>
+      )}
     </div>
   );
 }

@@ -7,6 +7,7 @@ const customerRoute = require("./routes/customerRoute");
 const loginUser = require("./routes/customerRoute");
 const { productsRoute } = require("./routes/productsRoute");
 const cookieSession = require("cookie-session");
+const userRoute = require("./routes/userIdRoute");
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use("/checkout", stripeRoute);
 app.use("/user", customerRoute);
 app.use("/user", loginUser);
 app.use("/products", productsRoute);
+app.use("/user", userRoute);
 
 app.listen(3000, () => console.log("Server is up and runninnn..."));

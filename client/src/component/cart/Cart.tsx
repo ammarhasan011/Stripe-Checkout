@@ -91,7 +91,6 @@ function Cart() {
         </div>
       ))}
       <h4>Totalt att betala: {totalPrice} kr</h4>
-      {/* {isLoggedIn ? <Checkout /> : <p>Logga in för att kunna betala</p>} */}
       {isLoggedIn === true ? (
         <Checkout />
       ) : (

@@ -13,8 +13,7 @@ interface RequestWithSession extends Request {
 async function createCheckoutSession(req: RequestWithSession, res: Response) {
   try {
     const cartItems: cartItem[] = req.body.cartItems;
-    console.log("Cart Items:", cartItems);
-
+    // console.log("Cart Items:", cartItems);
     const customerId = req.session.customerId;
     // console.log("custemer i Server", customerId);
 
@@ -31,7 +30,7 @@ async function createCheckoutSession(req: RequestWithSession, res: Response) {
       cancel_url: "http://localhost:5173",
       allow_promotion_codes: true,
     });
-    res.status(200).json({ url: session.url });
+    res.status(200).json({ url: session.url, sessionId: session.id });
   } catch (error) {
     console.error("Error creating checkout session:", error);
     res.status(500).json({ error: "Could not create checkout session" });

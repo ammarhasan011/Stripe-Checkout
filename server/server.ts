@@ -8,6 +8,7 @@ const loginUser = require("./routes/customerRoute");
 const { productsRoute } = require("./routes/productsRoute");
 const cookieSession = require("cookie-session");
 const userRoute = require("./routes/userIdRoute");
+const verifySession = require("./routes/verifySessionRoute");
 
 const app = express();
 
@@ -29,5 +30,6 @@ app.use("/user", customerRoute);
 app.use("/user", loginUser);
 app.use("/products", productsRoute);
 app.use("/user", userRoute);
+app.use("/verify", verifySession);
 
 app.listen(3000, () => console.log("Server is up and runninnn..."));

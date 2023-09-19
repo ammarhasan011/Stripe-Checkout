@@ -40,7 +40,7 @@ function LoginForm() {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit}>
         <h2>login</h2>
         {loginMessage && <p>{loginMessage}</p>}
@@ -69,8 +69,8 @@ function LoginForm() {
           <button type="submit">Logga in</button>
         </label>
       </form>
-      {/* <Orders />; */}
-    </div>
+      <Orders />
+    </>
   );
 }
 

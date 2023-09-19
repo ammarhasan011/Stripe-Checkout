@@ -1,14 +1,26 @@
 [
   {
-    "created": 1695037821,
+    "created": 1695152656,
     "customer": "123",
     "products": [
       {
-        "product": "iPhone 11 128GB White",
+        "product": "Mac Pro Tower",
         "quantity": 1,
-        "price": 5356
+        "price": 79196
       }
     ],
-    "totalAmount": 5356
+    "totalAmount": 79196
+  },
+  {
+    "created": 1695152656,
+    "customer": "123",
+    "products": [
+      {
+        "product": "Mac Pro Tower",
+        "quantity": 1,
+        "price": 79196
+      }
+    ],
+    "totalAmount": 79196
   }
 ]

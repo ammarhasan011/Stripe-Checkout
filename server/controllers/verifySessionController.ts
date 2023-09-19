@@ -1,8 +1,15 @@
 import { Request, Response } from "express";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const fs = require("fs");
+const fs = require("fs/promises");
 
 const orderDBFile = "orders.json";
+
+interface Order {
+  created: string;
+  customer: string;
+  products: any[];
+  totalAmount: number;
+}
 
 async function checkVerifySession(req: Request, res: Response) {
   try {
@@ -37,7 +44,7 @@ async function checkVerifySession(req: Request, res: Response) {
     };
 
     console.log("Order", order);
-    addOrderToDatabase(order);
+    await addOrderToDatabase(order);
     // spara till json fil
 
     res.status(200).json({ verified: true });
@@ -46,38 +53,17 @@ async function checkVerifySession(req: Request, res: Response) {
   }
 }
 
-interface Order {
-  created: string;
-  customer: string;
-  products: any[];
-  totalAmount: number;
-}
-
 async function addOrderToDatabase(order: Order) {
+  let orders: Order[] = [];
   try {
-    let orders: Order[] = [];
-    try {
-      const data = await fs.readFile(orderDBFile, "utf8");
-      if (data) {
-        orders = JSON.parse(data);
-      } else {
-        orders = [];
-      }
-    } catch (error) {
-      orders = [];
+    const data = await fs.readFile(orderDBFile, "utf8");
+    if (data) {
+      orders = JSON.parse(data);
     }
+
     orders.push(order);
 
-    await fs.writeFile(
-      orderDBFile,
-      JSON.stringify(orders, null, 2),
-      "utf8",
-      (error: any) => {
-        if (error) {
-          return;
-        }
-      }
-    );
+    await fs.writeFile(orderDBFile, JSON.stringify(orders, null, 2));
 
     console.log(`Order saved: ${JSON.stringify(order)}`);
   } catch (error) {

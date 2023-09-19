@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, ChangeEvent } from "react";
+import Orders from "../Orders/Orders";
 
 function LoginForm() {
   const [FormData, setFormData] = useState({
@@ -39,34 +40,37 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>login</h2>
-      {loginMessage && <p>{loginMessage}</p>}
-      <label>
-        Användernamn:
-        <input
-          type="text"
-          name="username"
-          value={FormData.username}
-          onChange={handleInputChange}
-          required
-        />
-      </label>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h2>login</h2>
+        {loginMessage && <p>{loginMessage}</p>}
+        <label>
+          Användernamn:
+          <input
+            type="text"
+            name="username"
+            value={FormData.username}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
 
-      <br />
-      <label>
-        Lösenord:
-        <input
-          type="text"
-          name="password"
-          value={FormData.password}
-          onChange={handleInputChange}
-          required
-        />
         <br />
-        <button type="submit">Logga in</button>
-      </label>
-    </form>
+        <label>
+          Lösenord:
+          <input
+            type="text"
+            name="password"
+            value={FormData.password}
+            onChange={handleInputChange}
+            required
+          />
+          <br />
+          <button type="submit">Logga in</button>
+        </label>
+      </form>
+      {/* <Orders />; */}
+    </div>
   );
 }
 

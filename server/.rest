@@ -36,3 +36,9 @@ Content-Type: application/json
   ],
   "customerId": "cus_Od7cO7WMaaR9Oj"
 }
+
+
+###
+GET http://localhost:3000/orders/getAllOrders/123
+
+###

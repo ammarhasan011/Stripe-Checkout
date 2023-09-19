@@ -4,6 +4,6 @@ const {
   checkVerifySession,
 } = require("../controllers/verifySessionController");
 
-sessionRouter.post("/verify-session", checkVerifySession);
+sessionRouter.post("/verify-session/:id", checkVerifySession);
 
 module.exports = sessionRouter;

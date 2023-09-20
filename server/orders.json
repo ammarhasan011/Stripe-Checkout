@@ -27,5 +27,29 @@
       }
     ],
     "totalAmount": 16386
+  },
+  {
+    "created": 1695195972,
+    "customer": "Ammar",
+    "products": [
+      {
+        "product": "Mac Pro Tower",
+        "quantity": 1,
+        "price": 79196
+      }
+    ],
+    "totalAmount": 79196
+  },
+  {
+    "created": 1695196764,
+    "customer": "Ammar",
+    "products": [
+      {
+        "product": "Mac mini: Apple M2 chip with 8‑core CPU and 10‑core GPU, 256GB SSD",
+        "quantity": 1,
+        "price": 8290
+      }
+    ],
+    "totalAmount": 8290
   }
 ]

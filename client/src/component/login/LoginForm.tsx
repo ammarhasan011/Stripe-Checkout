@@ -25,6 +25,11 @@ function LoginForm() {
       const response = await axios.post("/user/loginUser", FormData);
       console.log("login succeeded", response.data.message);
 
+      const username = response.data.user?.username;
+      if (username) {
+        localStorage.setItem("username", username);
+      }
+
       setFormData({
         username: "",
         password: "",

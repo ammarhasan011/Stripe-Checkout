@@ -166,5 +166,11 @@
     "username": "erik",
     "email": "erik@gmail.com",
     "password": "$2b$05$8yzgjKiGC/CKm6aOHVH6M.ufT9b1cnO5y79OEr9MWQdbvVpctn/36"
+  },
+  {
+    "customerId": "cus_OfhOJ7uxKFUsho",
+    "username": "Fredrik",
+    "email": "Fredrik@gmail.com",
+    "password": "$2b$05$lObfZ9g/4QnwtJa2wpYMr.PJSvM7mWmUS/kcyE1Y47GfKsncdAZc6"
   }
 ]

@@ -13,22 +13,27 @@ interface Order {
 const Orders = () => {
   const [userOrders, setUserOrders] = useState<Order[]>([]);
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:3000/orders/getAllOrders/Ammar"
-        );
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setUserOrders(data);
-      } catch (error) {
-        console.error("Fetch error:", error);
-      }
-    };
+    const username = localStorage.getItem("username");
 
-    fetchData();
+    if (username) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:3000/orders/getAllOrders/${username}`
+          );
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          const data = await response.json();
+          setUserOrders(data);
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
+      };
+
+      fetchData();
+    }
+    console.log(username, "username");
   }, []);
 
   return (

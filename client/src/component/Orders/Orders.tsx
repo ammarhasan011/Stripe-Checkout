@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 
+interface Order {
+  customer: string;
+  totalAmount: number;
+  products: {
+    product: string;
+    quantity: number;
+    price: number;
+  }[];
+}
+
 const Orders = () => {
-  const [userOrders, setUserOrders] = useState([]);
+  const [userOrders, setUserOrders] = useState<Order[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/orders/getAllOrders/123"
+          "http://localhost:3000/orders/getAllOrders/Ammar"
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");

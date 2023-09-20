@@ -12,35 +12,6 @@
     "totalAmount": 79196
   },
   {
-    "created": 1695152656,
-    "customer": "123",
-    "products": [
-      {
-        "product": "Mac Pro Tower",
-        "quantity": 1,
-        "price": 79196
-      }
-    ],
-    "totalAmount": 79196
-  },
-  {
-    "created": 1695155516,
-    "customer": "Ammar",
-    "products": [
-      {
-        "product": "iPhone 13 128GB (PRODUCT)RED",
-        "quantity": 1,
-        "price": 8396
-      },
-      {
-        "product": "iPhone 12 - 5G smartphone 64 GB (svart)",
-        "quantity": 1,
-        "price": 7990
-      }
-    ],
-    "totalAmount": 16386
-  },
-  {
     "created": 1695155516,
     "customer": "Ammar",
     "products": [

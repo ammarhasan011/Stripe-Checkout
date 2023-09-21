@@ -172,5 +172,23 @@
     "username": "Fredrik",
     "email": "Fredrik@gmail.com",
     "password": "$2b$05$lObfZ9g/4QnwtJa2wpYMr.PJSvM7mWmUS/kcyE1Y47GfKsncdAZc6"
+  },
+  {
+    "customerId": "cus_Ofl83o1frD595n",
+    "username": "ammar hasan",
+    "email": "ammarhassan@gmail.com",
+    "password": "$2b$05$fUfyOSH35hK9at4ktKQenejKAauyMUCEnTxxClAQNgTNDdu34iT0q"
+  },
+  {
+    "customerId": "cus_OflE8z9rIqsiT7",
+    "username": "1",
+    "email": "1@1.com",
+    "password": "$2b$05$MUp.vWl2qE8/2HBZMM7/geFQCIrYfudl9Bz.lQPpcq6tsJ2yGtpPm"
+  },
+  {
+    "customerId": "cus_Og8WSB4a0sW3kO",
+    "username": "xx",
+    "email": "xx@xx.se",
+    "password": "$2b$05$7.u2vrR18BvQpcmFM3cu2.hZ/oG8woDdPlFbMPqxtli.k6zINlbRO"
   }
 ]

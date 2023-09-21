@@ -3,7 +3,6 @@ import { CartContext } from "../../Context/CartContext";
 
 function Checkout() {
   const { cartItems } = useContext(CartContext);
-  console.log(cartItems);
 
   const [customerId, setCustomerId] = useState("");
 

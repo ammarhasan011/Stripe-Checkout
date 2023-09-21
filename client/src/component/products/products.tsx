@@ -33,17 +33,6 @@ function ProductList() {
         },
       ]);
     }
-
-    // const existingCartItems = JSON.parse(localStorage.getItem("cart") || "[]");
-    // const existingItem = existingCartItems.find(
-    //   (item: any) => item.product.id === product.id
-    // );
-    // if (existingItem) {
-    //   existingItem.quantity++;
-    // } else {
-    //   existingCartItems.push({ product, quantity: 1 });
-    // }
-    // localStorage.setItem("cart", JSON.stringify(existingCartItems));
   }
 
   useEffect(() => {

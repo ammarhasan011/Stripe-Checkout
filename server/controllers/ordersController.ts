@@ -13,8 +13,6 @@ interface CustomRequest extends Request {
 
 async function getOrders(req: CustomRequest, res: Response) {
   try {
-    // console.log("orders för ", req.params.id);
-
     const data = await fs.readFile(orderDBFile, "utf8");
 
     if (data) {

@@ -25,9 +25,8 @@ function RegisterForm() {
         "http://localhost:3000/user/registerUser",
         formData
       );
-      console.log("Registration succeeded:", response.data.message);
+      // console.log("Registration succeeded:", response.data.message);
 
-      // Återställ formuläret
       setFormData({
         username: "",
         email: "",

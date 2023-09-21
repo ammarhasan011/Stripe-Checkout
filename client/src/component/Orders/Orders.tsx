@@ -33,7 +33,6 @@ const Orders = () => {
 
       fetchData();
     }
-    console.log(username, "username");
   }, []);
 
   return (

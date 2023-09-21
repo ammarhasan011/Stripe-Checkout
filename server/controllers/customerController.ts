@@ -50,17 +50,14 @@ async function addUserToDatabase(user: User) {
   try {
     let users: User[] = [];
     try {
-      // Läs befintlig användardatabas från filen
       const data = await fs.readFile(userDBFile, "utf8");
       users = JSON.parse(data);
     } catch (error) {
-      // Om filen inte finns ännu eller är tom
       users = [];
       console.log(user);
     }
     users.push(user);
 
-    // Spara användardatabasen till filen
     await fs.writeFile(userDBFile, JSON.stringify(users, null, 2));
 
     console.log(`user ${user.username} saved in json.`);

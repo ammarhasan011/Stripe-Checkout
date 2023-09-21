@@ -13,8 +13,6 @@ interface Order {
 
 async function checkVerifySession(req: Request, res: Response) {
   try {
-    // console.log("sessionId", req.body.sessionId);
-    //retrive session from stripe
     const session = await stripe.checkout.sessions.retrieve(req.body.sessionId);
 
     if (session.payment_status !== "paid") {
@@ -45,7 +43,6 @@ async function checkVerifySession(req: Request, res: Response) {
 
     console.log("Order", order);
     await addOrderToDatabase(order);
-    // spara till json fil
 
     res.status(200).json({ verified: true });
   } catch (error) {

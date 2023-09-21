@@ -13,9 +13,8 @@ interface RequestWithSession extends Request {
 async function createCheckoutSession(req: RequestWithSession, res: Response) {
   try {
     const cartItems: cartItem[] = req.body.cartItems;
-    // console.log("Cart Items:", cartItems);
+
     const customerId = req.session.customerId;
-    // console.log("custemer i Server", customerId);
 
     const session = await stripe.checkout.sessions.create({
       line_items: cartItems.map((cartItem) => {

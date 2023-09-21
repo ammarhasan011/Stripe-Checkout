@@ -37,7 +37,6 @@ function Confirmation() {
   return isPaymentVerified ? (
     <div>
       <h1>Tack för ditt köp</h1>
-      {/* <p>Ordernummer: {orderNumber}</p>  här ska jag visa order när den är betalad*/}
     </div>
   ) : (
     <h2>Något gick fel med betalningen</h2>
